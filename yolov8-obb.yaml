@@ -1,0 +1,47 @@
+Sliding_Window:
+  default: False
+  window_size: 640
+  Full_Image_Path: 'datasets/surface-obb/Images/Sample3/Surface_sample3.tif'
+  sample_number: 3
+
+
+Data_preprocess:
+  default: False
+  # The data which not be preprocessed.
+  image_path: 'datasets/surface-obb/val/images/'
+  json_path: 'datasets/surface-obb/val/json_labels/'
+  restore_txt_path: 'datasets/surface-obb/val/labels'
+
+  # The data which be preprocessed.
+  restore_image_path: 'datasets/surface-obb/total_images/'
+
+  # The data which could be trained.
+  yolov8_data_path: 'datasets/surface-obb/'
+  train_number: 40
+  mirror: False
+
+
+Train_yolov8_obb:
+  default: True
+  device: '0,1'
+  epochs: 3000
+  batch_size: 30
+  model_yaml: 'ultralytics/cfg/models/v8/yolov8-obb.yaml'
+  weight_path: 'yolov8n-obb.pt'
+  data_yaml: 'ultralytics/cfg/datasets/surface-obb.yaml'
+
+
+Test_yolov8_obb:
+  default: True
+  inference_path: 'datasets/surface-obb_new/test/images/'
+  weight_path: 'runs/obb/train/weights/best.pt'
+  save_txt: True
+  show_labels: False
+  show_conf: True
+  show_boxes: True
+  conf: 0.3
+  iou: 0.8
+  exist_ok: False
+
+
+

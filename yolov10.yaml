@@ -1,0 +1,52 @@
+# The parameters of main.py
+model_yaml_path: 'ultralytics/cfg/models/v10/yolov10n.yaml'
+data_yaml_path: 'ultralytics/cfg/datasets/surface-obb.yaml'
+pre_model_name: 'yolov10n.pt'
+epochs: 3000
+batch: 32
+device: '0,1'
+
+
+###
+train_path: 'datasets/surface-obb_new/train/'
+val_path: 'datasets/surface-obb_new/val/'
+test_path: None
+
+
+### Control Flow.
+#function_to_execute: crop_yolo_detection #the function in main.py, i.e. Train, inference, single_image_txt_to_image, crop_yolo_detection
+#
+#weights: 'train'
+#single_txt_file:
+#single_image_file:
+#predict_file: 'runs/detect/predict/'
+
+Train_YOLOv10: True
+
+### if inference is True, you must have weights
+inference: False
+weights: 'Surface_new Train 20251003'
+show: False # (bool) show predicted images and videos if environment allows
+save_frames: False # (bool) save predicted individual video frames
+save_txt: True # (bool) save results as .txt file
+save_conf: True # (bool) save results with confidence scores
+save_crop: True # (bool) save cropped images with results
+show_labels: False # (bool) show prediction labels, i.e. 'person'
+show_conf: False # (bool) show prediction confidence, i.e. '0.99'
+show_boxes: True # (bool) show prediction boxes
+line_width: # (int, optional) line width of the bounding boxes. Scaled to image size if None.
+conf: 0.05
+iou: 0.8
+exist_ok: True
+
+### if single_iamge_txt_to_image is True, you must have single_txt_file and single_image_file.
+single_image_txt_to_image: False
+single_txt_file:
+single_image_file:
+
+### if crop_yolo_detection is True, you must have
+crop_yolo_detection: False
+path:
+  image_path: 'datasets/surface-obb_new/train/images/'
+  label_path: 'datasets/surface-obb_new/train/labels'
+  restore_path: 'runs/detect/Surface_new Train/'

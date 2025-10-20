@@ -1,0 +1,42 @@
+Data_preprocess:
+  default: False
+  image_path: 'datasets/PCBMatrix/val/images/'
+  label_path: 'datasets/PCBMatrix/val/labels/'
+  json_path: 'datasets/PCBMatrix/val/json_labels/'
+  yolov8_seg_path: 'datasets/PCB-seg/'
+  train_number: 25
+  h_min: 45
+  h_max: 179
+  s_min: 0
+  s_max: 135
+  v_min: 0
+  v_max: 100
+
+
+Train_yolov8_seg:
+  default: True
+  device: '0,1'
+  epochs: 3000
+  batch_size: 8
+  imgsz: 1280
+  model_yaml: 'ultralytics/cfg/models/v8/yolov8-seg.yaml'
+  weight_path: 'yolov8n-seg.pt'
+  data_yaml: 'ultralytics/cfg/datasets/PCB-seg.yaml'
+  name: '10_PCBM_low8_251020'
+
+
+Test_yolov8_seg:
+  default: False
+  inference_path: 'datasets/PCBMatrix/val/images/'
+  weight_path: 'runs/segment/9_PCBM_high8_251017/weights/best.pt'
+  save_txt: True
+  show_labels: False
+  show_conf: False
+  show_boxes: False
+  conf: 0.2
+  iou: 0.3
+  exist_ok: False
+  save_dir: 'runs/segment/predict9'
+
+
+
